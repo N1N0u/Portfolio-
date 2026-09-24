@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atef Aliat — AI & Computer Vision Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060a12;--fg:#e6f1f7;--mute:#8aa0ae;--acc:#00f7ff;--acc2:#8b5cf6;--card:rgba(10,18,30,.66);--line:rgba(0,247,255,.22);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#eef3f8;--fg:#0b1a26;--mute:#476071;--acc:#0079a8;--acc2:#6d3fe0;--card:rgba(255,255,255,.75);--line:rgba(0,121,168,.3)}}
+:root[data-theme="light"]{--bg:#eef3f8;--fg:#0b1a26;--mute:#476071;--acc:#0079a8;--acc2:#6d3fe0;--card:rgba(255,255,255,.75);--line:rgba(0,121,168,.3)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--fg);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden;transition:background .4s,color .4s}
+canvas#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:16px 5vw;font-family:'JetBrains Mono',monospace;font-size:13px;background:linear-gradient(var(--bg),transparent)}
+nav b{color:var(--acc)}nav div{display:flex;align-items:center;gap:20px}nav a{color:var(--mute);text-decoration:none;transition:.2s}nav a:hover{color:var(--acc)}
+#tg{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--fg);font-size:18px;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+#tg:hover{border-color:var(--acc)}
+@media(max-width:640px){nav a{display:none}}
+section{position:relative;z-index:1;min-height:100vh;padding:14vh 5vw 8vh;max-width:1180px;margin:auto;display:flex;flex-direction:column;justify-content:center}
+.tag{font-family:'JetBrains Mono',monospace;color:var(--acc);font-size:13px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(44px,9vw,110px);line-height:.95;font-weight:700;letter-spacing:-.03em}
+h1 span{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:clamp(30px,5vw,54px);margin-bottom:28px;letter-spacing:-.02em}
+p.lead{max-width:620px;color:var(--mute);font-size:clamp(16px,2vw,20px);line-height:1.6;margin-top:24px}
+.btns{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.btn{padding:13px 24px;border-radius:999px;border:1px solid var(--acc);color:var(--acc);text-decoration:none;font-weight:600;transition:.25s}
+.btn.f{background:var(--acc);color:var(--bg)}.btn:hover{box-shadow:0 0 28px var(--line);transform:translateY(-2px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;perspective:900px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);text-decoration:none;color:inherit;transition:transform .15s,border-color .2s;transform-style:preserve-3d;display:block}
+a.card:hover{border-color:var(--acc)}
+.card h3{font-size:20px;margin-bottom:8px}.card p{color:var(--mute);font-size:15px;line-height:1.55}
+.card .m{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.card .m em{font-style:normal;font-size:12px;padding:4px 10px;border-radius:999px;background:var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace}
+.card small{display:block;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--acc)}
+.stats{display:flex;gap:40px;margin-top:34px;flex-wrap:wrap}.stats div b{display:block;font-size:40px;color:var(--acc)}.stats span{color:var(--mute);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}.chips i{font-style:normal;padding:9px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-family:'JetBrains Mono',monospace;font-size:13px}
+.stackrow{margin-bottom:26px}.stackrow h4{color:var(--mute);font-weight:400;font-size:13px;margin-bottom:10px;letter-spacing:.1em;text-transform:uppercase}
+footer{position:relative;z-index:1;text-align:center;color:var(--mute);padding:30px;font-size:13px}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<nav><b>&lt;N1N0u/&gt;</b><div><a href="#about">About</a><a href="#work">Work</a><a href="#stack">Stack</a><a href="#contact">Contact</a><button id="tg" aria-label="Toggle dark/light mode">☾</button></div></nav>
+
+<section id="hero">
+  <div class="tag">Algeria 🇩🇿 · Open to remote</div>
+  <h1>ALIAT<br><span>Atef.</span></h1>
+  <p class="lead">Computer Vision &amp; Edge AI engineer. I build real-time systems that run fast on ordinary hardware — from face-recognition security to observability stacks.</p>
+  <div class="btns"><a class="btn f" href="#work">View projects</a><a class="btn" href="#contact">Get in touch</a></div>
+</section>
+
+<section id="about">
+  <div class="tag">01 / About</div>
+  <h2>Performance over theory.</h2>
+  <div class="grid">
+    <div class="card"><h3>Computer Vision &amp; Edge AI</h3><p>Real-time CV, ONNX deployment, biometric security and CPU-only optimization.</p></div>
+    <div class="card"><h3>Education</h3><p>M.Sc. Computer Science — Artificial Vision, Université Larbi Ben M'Hidi (2019).</p></div>
+    <div class="card"><h3>At EMIT Company</h3><p>Lead developer for software and computer vision solutions, including the corporate website.</p></div>
+    <div class="card"><h3>Languages</h3><p>Arabic (native) · English (C1–C2) · French (C2)</p></div>
+  </div>
+  <div class="stats"><div><b>&lt;100ms</b><span>face recognition, end to end</span></div><div><b>99.2%</b><span>LFW accuracy</span></div><div><b>18</b><span>repositories</span></div></div>
+</section>
+
+<section id="work">
+  <div class="tag">02 / Selected work</div>
+  <h2>Projects</h2>
+  <div class="grid" id="projects"></div>
+</section>
+
+<section id="stack">
+  <div class="tag">03 / Toolbox</div>
+  <h2>Stack</h2>
+  <div class="stackrow"><h4>AI / Computer Vision</h4><div class="chips"><i>Python</i><i>PyTorch</i><i>TensorFlow</i><i>OpenCV</i><i>ONNX Runtime</i><i>MTCNN</i><i>FaceNet</i><i>Real-ESRGAN</i><i>YOLOv8</i><i>TensorRT</i></div></div>
+  <div class="stackrow"><h4>Desktop &amp; Backend</h4><div class="chips"><i>Java Swing</i><i>FlatLaf</i><i>CustomTkinter</i><i>SQLite / JDBC</i><i>MySQL</i><i>PHP</i><i>Flask</i></div></div>
+  <div class="stackrow"><h4>Web</h4><div class="chips"><i>HTML5</i><i>CSS3</i><i>Bootstrap 5</i><i>JavaScript</i><i>SEO</i></div></div>
+  <div class="stackrow"><h4>DevOps &amp; Observability</h4><div class="chips"><i>Docker Compose</i><i>Prometheus</i><i>Grafana</i><i>Alertmanager</i><i>DCGM / Intel GPU exporters</i><i>Linux</i></div></div>
+</section>
+
+<section id="contact">
+  <div class="tag">04 / Contact</div>
+  <h2>Let's build something that sees.</h2>
+  <p class="lead">Open to remote Computer Vision / ML engineer roles. Source for private projects is available to verified hiring managers and in technical interviews.</p>
+  <div class="btns"><a class="btn f" href="mailto:aliat.atef@gmail.com">Email</a><a class="btn" href="https://www.linkedin.com/in/atef-aliat/">LinkedIn</a><a class="btn" href="https://github.com/N1N0u">GitHub</a><a class="btn" href="https://www.kaggle.com/atefaliat">Kaggle</a></div>
+</section>
+<footer>© 2026 ALIAT Atef</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const P=[
+["USB Face-Recognition Locker","Locks any inserted USB drive automatically and unlocks it only through real-time face recognition. ONNX models on CPU, no GPU needed.",["&lt;100ms","99.2% LFW","76MB .exe"],"Python · ONNX · CustomTkinter · psutil","usb-face-recognition-locker"],
+["PcMonitor","Production-style observability stack: Prometheus, Grafana and Alertmanager with Gmail alerts, NVIDIA + Intel GPU telemetry and a Flask stress-test app.",["Docker Compose","15s scrape","7 alert rules"],"Prometheus · Grafana · Docker","PcMonitor"],
+["AI Image Enhancer","Desktop tool combining manual OpenCV controls with Real-ESRGAN x4 super-resolution, built to run on a CPU-only, 4GB machine.",["x4 upscaling","CPU only","5–20s / image"],"Python · PyTorch · OpenCV","Image-Enhancer-Tool"],
+["Inventory Management System","Freelance Java Swing desktop app for stock, sales, purchases, clients and credits with an interactive dashboard. Delivered in one week.",["1 week","Dashboard","Credits"],"Java · SQLite · FlatLaf · MigLayout","inventory-management-system"],
+["EMIT Company Website","Responsive corporate site for an electrical, BTP and CCTV company, with a PHP-validated contact form and SEO-ready structure. Live in production.",["Live","Responsive","SEO"],"HTML5 · Bootstrap 5 · JS · PHP","emitcompany-website"],
+["Face Recognition V2","Real-time recognition pipeline: detection → embedding → recognition.",["Real-time"],"MTCNN · FaceNet · OpenCV","Face_Recognition_V2"]];
+const box=document.getElementById('projects');
+P.forEach(p=>{const a=document.createElement('a');a.className='card';a.href='https://github.com/N1N0u/'+p[4];a.target='_blank';a.rel='noopener';
+a.innerHTML=`<h3>${p[0]}</h3><p>${p[1]}</p><div class="m">${p[2].map(x=>'<em>'+x+'</em>').join('')}</div><small>${p[3]}</small>`;box.appendChild(a);
+a.addEventListener('mousemove',e=>{const r=a.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;a.style.transform=`rotateY(${x*12}deg) rotateX(${-y*12}deg)`});
+a.addEventListener('mouseleave',()=>a.style.transform='')});
+
+/* ---------- 3D scene: floating dev workspace (code, web, computer vision) ---------- */
+const root=document.documentElement,tg=document.getElementById('tg'),mq=matchMedia('(prefers-color-scheme:dark)');
+const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':mq.matches;
+const cv=document.getElementById('bg'),R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
+R.setPixelRatio(Math.min(devicePixelRatio,2));
+const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(55,1,.1,200);C.position.set(0,0,10);
+const TW=512,TH=340,F='14px "JetBrains Mono",monospace';
+const rr=(x,a,b,c,d,r)=>{x.beginPath();x.roundRect?x.roundRect(a,b,c,d,r):x.rect(a,b,c,d)};
+let PL={};
+function pal(){const cs=getComputedStyle(root),d=isDark();return{acc:cs.getPropertyValue('--acc').trim(),k:cs.getPropertyValue('--acc2').trim(),
+bg:d?'#0a1220':'#ffffff',f:d?'#dbe7ef':'#12222f',c:d?'#6f8798':'#7b8f9d',ln:d?'#16263a':'#e3ecf3',s:d?'#34d399':'#059669',n:d?'#fbbf24':'#b45309'}}
+function frame(x,t){x.clearRect(0,0,TW,TH);x.fillStyle=PL.bg;rr(x,2,2,TW-4,TH-4,14);x.fill();x.strokeStyle=PL.acc;x.lineWidth=2;x.stroke();
+x.fillStyle=PL.ln;x.fillRect(3,3,TW-6,32);['#ff5f57','#febc2e','#28c840'].forEach((c,i)=>{x.fillStyle=c;x.beginPath();x.arc(20+i*18,19,5,0,7);x.fill()});
+x.fillStyle=PL.c;x.font=F;x.fillText(t,100,24)}
+function code(x,L){x.font=F;L.forEach((ln,i)=>{let cx=38,y=64+i*27;x.fillStyle=PL.c;x.fillText(i+1,12,y);for(let j=0;j<ln.length;j+=2){x.fillStyle=PL[ln[j]];x.fillText(ln[j+1],cx,y);cx+=x.measureText(ln[j+1]).width}})}
+const D=[
+x=>{frame(x,'recognize.py');code(x,[['k','import ','f','cv2, onnxruntime'],[],['k','def ','a','recognize','f','(frame):'],['f','  faces = ','a','detect','f','(frame)'],['k','  for ','f','box ','k','in ','f','faces:'],['f','    emb = model.','a','run','f','(box)'],['k','    yield ','a','match','f','(emb) ','c','# 15ms'],[],['c','# < 100ms on CPU']])},
+x=>{frame(x,'emitcompany.dz');x.fillStyle=PL.ln;rr(x,90,42,330,20,10);x.fill();x.fillStyle=PL.s;x.fillRect(100,48,8,8);
+x.fillStyle=PL.k;x.fillRect(24,80,28,14);x.fillStyle=PL.c;[200,260,320,380].forEach(a=>x.fillRect(a,84,40,6));
+x.fillStyle=PL.f;x.fillRect(24,122,240,16);x.fillRect(24,146,190,16);x.fillStyle=PL.c;x.fillRect(24,176,300,7);x.fillRect(24,190,260,7);
+x.fillStyle=PL.acc;rr(x,24,214,90,26,13);x.fill();x.strokeStyle=PL.k;x.lineWidth=1.5;rr(x,340,110,150,110,10);x.stroke();x.fillStyle=PL.k;x.globalAlpha=.25;x.fillRect(340,110,150,110);x.globalAlpha=1;
+[24,190,356].forEach(a=>{x.strokeStyle=PL.acc;rr(x,a,262,140,56,8);x.stroke();x.fillStyle=PL.c;x.fillRect(a+12,276,80,6);x.fillRect(a+12,292,50,6)})},
+x=>{frame(x,'camera_01 · detection');const g=x.createLinearGradient(0,40,0,TH);g.addColorStop(0,PL.ln);g.addColorStop(1,PL.bg);x.fillStyle=g;x.fillRect(12,42,488,286);
+x.strokeStyle=PL.c;x.lineWidth=2;x.beginPath();x.ellipse(200,192,58,76,0,0,7);x.stroke();
+x.fillStyle=PL.acc;[[178,170],[222,170],[200,196],[182,226],[218,226],[200,232],[152,180],[248,180]].forEach(([a,b])=>{x.beginPath();x.arc(a,b,3.5,0,7);x.fill()});
+x.strokeStyle=PL.acc;x.globalAlpha=.4;x.beginPath();x.moveTo(178,170);x.lineTo(222,170);x.lineTo(200,196);x.lineTo(178,170);x.lineTo(182,226);x.lineTo(218,226);x.lineTo(222,170);x.stroke();x.globalAlpha=1;
+function box(a,b,w,h,c,l){x.strokeStyle=c;x.lineWidth=3;x.strokeRect(a,b,w,h);x.fillStyle=c;x.fillRect(a,b-20,x.measureText(l).width+12,20);x.fillStyle=PL.bg;x.font=F;x.fillText(l,a+6,b-6)}
+box(128,86,144,214,PL.s,'face 0.98');x.strokeStyle=PL.n;x.lineWidth=2;x.beginPath();x.arc(390,180,26,0,7);x.stroke();rr(x,354,212,72,90,26);x.stroke();box(340,140,100,170,PL.n,'person 0.94');
+x.fillStyle=PL.acc;x.globalAlpha=.5;x.fillRect(12,232,488,2);x.globalAlpha=1},
+x=>{frame(x,'Main.java');code(x,[['k','public class ','a','Main ','f','{'],['k','  public static void ','a','main','f','(String[] a) {'],['k','    var ','f','db = ','a','DriverManager'],['f','      .getConnection(url);'],['k','    new ','a','Dashboard','f','().'],['a','      setVisible','f','(','k','true','f',');'],['f','  }'],['f','}']])},
+x=>{frame(x,'stock.sql');code(x,[['k','SELECT ','f','p.name, ','a','SUM','f','(s.qty)'],['k','FROM ','f','stock s'],['k','JOIN ','f','products p'],['k','  ON ','f','p.id = s.product_id'],['k','WHERE ','f','s.qty < ','n','10'],['k','GROUP BY ','f','p.name'],['k','ORDER BY ','n','2 ','k','DESC','f',';']])},
+x=>{frame(x,'bash');code(x,[['s','$ ','f','docker compose up -d'],['s','✔ ','f','prometheus   Started'],['s','✔ ','f','grafana      Started'],['s','✔ ','f','alertmanager Started'],['s','$ ','f','git commit -m ','n','"ship it"'],['s','$ ','f','python main.py','c',' _']])},
+x=>{frame(x,'index.html');code(x,[['c','<!-- responsive -->'],['k','<section ','a','class','f','=','s','"hero"','k','>'],['k','  <h1>','f','EMIT Company','k','</h1>'],['k','  <form ','a','method','f','=','s','"post"','k','>'],['k','    <input ','a','name','f','=','s','"email"','k','>'],['k','  </form>'],['k','</section>'],['c','/* Bootstrap 5 */']])}
+];
+const panels=[],lay=[[2,4.6,.8,-3,-.35,1],[0,-7.5,2.6,-6,.4,1],[1,9,-1.6,-8,-.4,1.1],[3,-10,-2.4,-9,.35,1],[4,1.5,5.4,-11,0,1],[5,-3.5,-4.2,-5,.3,.9],[6,11,4.2,-13,-.3,1.1],[0,6,-4.6,-12,-.2,.9],[2,-13,5,-14,.3,.9],[1,-5,7.4,-16,.2,1],[5,-9,-6,-11,.3,1]];
+const tex=D.map(()=>{const c=document.createElement('canvas');c.width=TW;c.height=TH;return new THREE.CanvasTexture(c)});
+lay.forEach(([t,x,y,z,ry,s])=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(5,5*TH/TW),new THREE.MeshBasicMaterial({map:tex[t],transparent:true,opacity:.78,side:THREE.DoubleSide}));
+m.position.set(x,y,z);m.rotation.y=ry;m.scale.setScalar(s);m.userData={x,y,p:Math.random()*9};S.add(m);panels.push(m)});
+const grid=new THREE.GridHelper(120,60,0x00f7ff,0x00f7ff);grid.position.y=-9;grid.material.transparent=true;grid.material.opacity=.16;S.add(grid);
+function colors(){PL=pal();tex.forEach((t,i)=>{D[i](t.image.getContext('2d'));t.needsUpdate=true});grid.material.color.set(PL.acc);tg.textContent=isDark()?'☀':'☾'}
+function setTheme(t){root.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}colors()}
+try{const s=localStorage.getItem('theme');if(s)root.dataset.theme=s}catch(e){}
+tg.onclick=()=>setTheme(isDark()?'light':'dark');
+mq.addEventListener&&mq.addEventListener('change',colors);colors();document.fonts&&document.fonts.ready.then(colors);
+function size(){const w=innerWidth,h=innerHeight;R.setSize(w,h,false);C.aspect=w/h;C.updateProjectionMatrix();panels.forEach(m=>m.userData.k=w>800?1:.45)}
+addEventListener('resize',size);size();
+let mx=0,my=0;addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+const clk=new THREE.Clock();
+(function loop(){requestAnimationFrame(loop);const t=clk.getElapsedTime(),sc=scrollY/Math.max(1,document.body.scrollHeight-innerHeight);
+panels.forEach(m=>{const d=m.userData;m.position.x=d.x*d.k;m.position.y=d.y+Math.sin(t*.6+d.p)*.35+sc*7;m.rotation.x=Math.sin(t*.4+d.p)*.05});
+grid.position.z=(t*1.2)%2;C.position.x+=(mx*2.2-C.position.x)*.05;C.position.y+=(-my*1.4-C.position.y)*.05;C.lookAt(0,0,-4);R.render(S,C)})();
+</script>
+</body>
+</html>
